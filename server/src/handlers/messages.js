@@ -31,7 +31,6 @@ exports.getAllMessages = async function (req, res, next){
         .find()
         .populate("user", { username: true, profileImageUrl: true })
         .lean()
-        .catch(err => next(err));
-    if (!messages || messages.length === 0) return;
+        .catch(err => next(err));    
     return res.json(messages);
 }

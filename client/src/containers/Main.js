@@ -5,6 +5,8 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
+import withAuth from "../hocs/withAuth";
+import MessageForm from "./MessageForm";
 
 const Main = props => {
 
@@ -22,9 +24,9 @@ const Main = props => {
                 <Route exact path="/" render={p => homePageWithProps({...p, currentUser })} />                
                 <Route exact path="/signin" render={p => signInAuthForm({ ...p, ...extraProps })} />
                 <Route exact path="/signup" render={p => signUpAuthForm({ ...p, ...extraProps })} />
+                <Route path="/user/:id/messages/new" component={withAuth(MessageForm)} />
             </Switch>
-        </div>
-    )
+        </div>)
 }
 
 function homePageWithProps(props){

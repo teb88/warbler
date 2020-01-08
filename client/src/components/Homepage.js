@@ -1,4 +1,5 @@
 import React from "react";
+import MessageTimeline from "./MessageTimeline";
 import { Link } from "react-router-dom";
 
 const Homepage = (props) => !props.currentUser.isAuthenticated ?
@@ -8,7 +9,7 @@ const Homepage = (props) => !props.currentUser.isAuthenticated ?
         <Link to="/signup" className="btn btn-primary" >Sign up here</Link>
     </section>
     :
-    <div><h1>You made it!</h1></div>
+    <div><MessageTimeline username={props.currentUser.user.username} profileImageUrl={props.currentUser.user.profileImageUrl} /></div>
 
 
 export default Homepage;

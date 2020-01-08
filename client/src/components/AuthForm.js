@@ -29,7 +29,6 @@ class AuthForm extends React.Component {
     }
 
     render(){
-
         const { email, password, username, profileImageUrl } = this.state;
         const { errors, heading, buttonText, signUp, removeError, history } = this.props;
         

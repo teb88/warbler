@@ -4,7 +4,7 @@ const defaultError = {
     message: null
 }
 
-export default function errorReducer(state=defaultError, action){
+export default function (state=defaultError, action){
     switch(action.type){
         case ADD_ERROR:
             return { ...state, message: action.err }

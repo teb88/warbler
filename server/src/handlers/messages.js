@@ -27,10 +27,12 @@ exports.removeMessage = async function (req, res, next){
 }
 
 exports.getAllMessages = async function (req, res, next){
-    const messages = await Message
-        .find()
-        .populate("user", { username: true, profileImageUrl: true })
-        .lean()
-        .catch(err => next(err));    
+    const messages = await Message.find();
+    if (messages.length > 0){
+        await messages
+                .populate("user", { username: true, profileImageUrl: true }).execPopulate()                
+                .catch(err => next(err));
+        }
+
     return res.json(messages);
 }

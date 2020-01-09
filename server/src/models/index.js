@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://dockerhost.com/warbler", {
+mongoose.connect(`mongodb://${process.env.DB_HOST}/warbler`, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,

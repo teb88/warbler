@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  backend:
+    build:
+      context: ./server
+    restart: always
+    networks:
+      - backend_net
+      - frontend_net
+    ports:
+      - 8081:8081
+    environment:
+      SECRET_KEY: "Habia una vez un barco chiquito"
+      PORT: 8081
+      DB_HOST: dabatase
+    depends_on:
+        - database
+
+  database:
+    image: mongo:4.2.1-bionic
+    restart: always
+    networks:
+      - backend_net
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mysuperpassword
+      HOST: http://dockerhost.com
+    volumes:
+      - api_db_vol:/data/db
+
+#   frontend:
+#     build:
+#       context: ./client
+#     restart: always
+#     networks:
+#       - frontend_net
+#     ports:
+#       - 3000:3000
+
+volumes:
+  api_db_vol:
+
+networks:
+  backend_net:
+  frontend_net:

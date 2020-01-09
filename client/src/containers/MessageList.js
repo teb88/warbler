@@ -12,6 +12,9 @@ class MessageList extends React.Component {
   render() {
     const { messages, deleteMessage, currentUser } = this.props;
     const { _id } = currentUser.user;
+
+    console.log(JSON.stringify(messages))
+
     const messageItems = messages.map(m => (
       <MessageItem
         key={m._id}

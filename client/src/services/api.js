@@ -8,9 +8,9 @@ export function setTokenHeader(token){
     }
 }
 
-export async function apiCall(method, path, data){
+export async function apiCall(method, path, data){    
     return new Promise((resolve, reject)=>
-         axios[method](path, data)
+        axios[method](process.env.REACT_APP_BASE_URL + path, data)
             .then(res => resolve(res.data))
             .catch(err => reject(err.response.data.error))
     )  

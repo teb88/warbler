@@ -54,6 +54,7 @@ ul.nav.navbar-nav li {
 
 .list-group-item {
     display: flex;
+    position: relative;
 }
 
 .list-group-item .message-area {
@@ -79,4 +80,11 @@ ul.nav.navbar-nav li {
 
 .logo-text:hover {
     color: white;
+}
+
+.btn-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
 }

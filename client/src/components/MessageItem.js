@@ -31,7 +31,7 @@ const MessageItem = ({
             {isAuthor && (
               <button type="button" 
                 onClick={onDelete}
-                className="btn btn-sm btn-danger">
+                className="btn btn-sm btn-danger btn-delete">
                 Delete
               </button>
             )}

@@ -3,7 +3,7 @@ version: "3.7"
 services:
   backend:
     build:
-      context: ./server
+      context: ./server      
     restart: always
     networks:
       - backend_net
@@ -24,20 +24,23 @@ services:
       - backend_net
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: mysuperpassword
-      HOST: http://dockerhost.com
+      MONGO_INITDB_ROOT_PASSWORD: mysuperpassword      
     volumes:
       - api_db_vol:/data/db
 
-#   frontend:
-#     build:
-#       context: ./client
-#     restart: always
-#     networks:
-#       - frontend_net
-#     ports:
-#       - 3000:3000
-
+  frontend:
+    build:
+      context: ./client
+      args:
+        BASE_URL: http://localhost:8081        
+    restart: always
+    networks:
+      - frontend_net
+    ports:
+      - 3005:3005
+    environment:
+      SERVE_PORT: 3005
+      
 volumes:
   api_db_vol:
 

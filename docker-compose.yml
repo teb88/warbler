@@ -13,11 +13,11 @@ services:
     environment:
       SECRET_KEY: "Habia una vez un barco chiquito"
       PORT: 8081
-      DB_HOST: dabatase
+      DB_HOST: db
     depends_on:
-        - database
+        - db
 
-  database:
+  db:
     image: mongo:4.2.1-bionic
     restart: always
     networks:

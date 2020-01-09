@@ -30,7 +30,8 @@ exports.getAllMessages = async function (req, res, next){
     const messages = await Message.find();
     if (messages.length > 0){
         await messages
-                .populate("user", { username: true, profileImageUrl: true }).execPopulate()                
+                .populate("user", { username: true, profileImageUrl: true })
+                .execPopulate()          
                 .catch(err => next(err));
         }
 
